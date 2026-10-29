@@ -73,6 +73,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(45, resultat);
     }
+    [Fact]
+    public void Evaluer_AvecUnFull_Retourne50Points()
+    {
+        var main = new[]
+        {
+            new Carte(2, Enseigne.Coeur),
+            new Carte(2, Enseigne.Pique),
+            new Carte(2, Enseigne.Carreau),
+            new Carte(9, Enseigne.Trefle),
+            new Carte(9, Enseigne.Pique)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(50, resultat);
+    }
+
 
 
 }
