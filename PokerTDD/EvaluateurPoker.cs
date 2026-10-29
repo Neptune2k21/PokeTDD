@@ -6,11 +6,12 @@ public class EvaluateurPoker
     {
         var cartes = main.ToList();
 
-        bool contientBrelan = cartes
+        var groupes = cartes
             .GroupBy(carte => carte.value)
-            .Any(groupe => groupe.Count() >= 3);
+            .Select(groupe => groupe.Count())
+            .ToList();
 
-        if (contientBrelan)
+        if (groupes.Any(nombre => nombre >= 3))
         {
             return 30;
         }
@@ -20,14 +21,22 @@ public class EvaluateurPoker
             .OrderBy(valeur => valeur)
             .ToList();
 
-        bool contientSuite = valeurs
-            .Distinct()
-            .Count() == 5
+        bool contientSuite = valeurs.Distinct().Count() == 5
             && valeurs[4] - valeurs[0] == 4;
 
         if (contientSuite)
         {
             return 40;
+        }
+
+        bool contientCouleur = cartes
+            .Select(carte => carte.Enseigne)
+            .Distinct()
+            .Count() == 1;
+
+        if (contientCouleur)
+        {
+            return 45;
         }
 
         return cartes.Max(carte => carte.value);
