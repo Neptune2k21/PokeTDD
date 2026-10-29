@@ -36,5 +36,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(13, resultat);
     }
+
+[Fact]
+    public void Evaluer_AvecUneSuite_Retourne40Points()
+    {
+        var main = new[]
+        {
+            new Carte(5, Enseigne.Trefle),
+            new Carte(6, Enseigne.Carreau),
+            new Carte(7, Enseigne.Coeur),
+            new Carte(8, Enseigne.Pique),
+            new Carte(9, Enseigne.Trefle)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(40, resultat);
+    }
+
 }
 
