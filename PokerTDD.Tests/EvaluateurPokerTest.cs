@@ -127,6 +127,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(80, resultat);
     }
+    [Fact]
+    public void Evaluer_AvecAsDeuxTroisQuatreCinq_Retourne14Points()
+    {
+        var main = new[]
+        {
+            new Carte(14, Enseigne.Coeur),
+            new Carte(2, Enseigne.Pique),
+            new Carte(3, Enseigne.Carreau),
+            new Carte(4, Enseigne.Trefle),
+            new Carte(5, Enseigne.Coeur)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(14, resultat);
+    }
+
 
 
 
