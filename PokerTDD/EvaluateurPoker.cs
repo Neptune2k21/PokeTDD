@@ -58,4 +58,10 @@ public class EvaluateurPoker
 
         return cartes.Max(carte => carte.value);
     }
+
+    public int CalculerTotal(IEnumerable<MainPoker> mains)
+    {
+        return mains.Sum(main => Evaluer(main.Cartes));
+    }
+
 }

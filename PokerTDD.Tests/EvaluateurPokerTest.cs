@@ -146,6 +146,56 @@ public class EvaluateurPokerTest
         Assert.Equal(14, resultat);
     }
 
+    [Fact]
+    public void CalculerTotal_AvecLesMainsDeExemple_Retourne148Points()
+    {
+        var mains = new List<MainPoker>
+        {
+            new(new[]
+            {
+                new Carte(2, Enseigne.Coeur),
+                new Carte(2, Enseigne.Pique),
+                new Carte(2, Enseigne.Carreau),
+                new Carte(9, Enseigne.Trefle),
+                new Carte(9, Enseigne.Pique)
+            }),
+
+            new(new[]
+            {
+                new Carte(5, Enseigne.Trefle),
+                new Carte(6, Enseigne.Carreau),
+                new Carte(7, Enseigne.Coeur),
+                new Carte(8, Enseigne.Pique),
+                new Carte(9, Enseigne.Trefle)
+            }),
+
+            new(new[]
+            {
+                new Carte(2, Enseigne.Coeur),
+                new Carte(7, Enseigne.Coeur),
+                new Carte(9, Enseigne.Coeur),
+                new Carte(11, Enseigne.Coeur),
+                new Carte(13, Enseigne.Coeur)
+            }),
+
+            new(new[]
+            {
+                new Carte(3, Enseigne.Trefle),
+                new Carte(8, Enseigne.Carreau),
+                new Carte(10, Enseigne.Coeur),
+                new Carte(12, Enseigne.Pique),
+                new Carte(13, Enseigne.Trefle)
+            })
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.CalculerTotal(mains);
+
+        Assert.Equal(148, resultat);
+    }
+
+
 
 
 
