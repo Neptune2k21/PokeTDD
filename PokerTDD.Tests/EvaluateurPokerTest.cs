@@ -109,6 +109,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(60, resultat);
     }
+    [Fact]
+    public void Evaluer_AvecUneQuinteFlush_Retourne80Points()
+    {
+        var main = new[]
+        {
+            new Carte(5, Enseigne.Coeur),
+            new Carte(6, Enseigne.Coeur),
+            new Carte(7, Enseigne.Coeur),
+            new Carte(8, Enseigne.Coeur),
+            new Carte(9, Enseigne.Coeur)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(80, resultat);
+    }
+
 
 
 
