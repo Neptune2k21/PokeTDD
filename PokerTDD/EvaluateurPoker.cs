@@ -13,6 +13,11 @@ public class EvaluateurPoker
             .OrderByDescending(nombre => nombre)
             .ToList();
 
+        if (groupes[0] == 4)
+        {
+            return 60;
+        }
+
         if (groupes[0] == 3 && groupes[1] == 2)
         {
             return 50;
