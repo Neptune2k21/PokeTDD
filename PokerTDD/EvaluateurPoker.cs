@@ -13,6 +13,24 @@ public class EvaluateurPoker
             .OrderByDescending(nombre => nombre)
             .ToList();
 
+        var values = cartes
+            .Select(carte => carte.value)
+            .OrderBy(value => value)
+            .ToList();
+
+        bool contientSuite = values.Distinct().Count() == 5
+            && values[4] - values[0] == 4;
+
+        bool contientCouleur = cartes
+            .Select(carte => carte.Enseigne)
+            .Distinct()
+            .Count() == 1;
+
+        if (contientSuite && contientCouleur)
+        {
+            return 80;
+        }
+
         if (groupes[0] == 4)
         {
             return 60;
@@ -28,23 +46,10 @@ public class EvaluateurPoker
             return 30;
         }
 
-        var values = cartes
-            .Select(carte => carte.value)
-            .OrderBy(value => value)
-            .ToList();
-
-        bool contientSuite = values.Distinct().Count() == 5
-            && values[4] - values[0] == 4;
-
         if (contientSuite)
         {
             return 40;
         }
-
-        bool contientCouleur = cartes
-            .Select(carte => carte.Enseigne)
-            .Distinct()
-            .Count() == 1;
 
         if (contientCouleur)
         {
