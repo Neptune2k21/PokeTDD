@@ -55,6 +55,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(40, resultat);
     }
+    [Fact]
+    public void Evaluer_AvecUneCouleur_Retourne45Points()
+    {
+        var main = new[]
+        {
+            new Carte(2, Enseigne.Coeur),
+            new Carte(5, Enseigne.Coeur),
+            new Carte(8, Enseigne.Coeur),
+            new Carte(11, Enseigne.Coeur),
+            new Carte(13, Enseigne.Coeur)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(45, resultat);
+    }
+
 
 }
 
