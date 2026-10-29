@@ -1,3 +1,4 @@
+
 namespace PokerTDD;
 
 public class EvaluateurPoker
@@ -9,20 +10,26 @@ public class EvaluateurPoker
         var groupes = cartes
             .GroupBy(carte => carte.value)
             .Select(groupe => groupe.Count())
+            .OrderByDescending(nombre => nombre)
             .ToList();
 
-        if (groupes.Any(nombre => nombre >= 3))
+        if (groupes[0] == 3 && groupes[1] == 2)
+        {
+            return 50;
+        }
+
+        if (groupes[0] >= 3)
         {
             return 30;
         }
 
-        var valeurs = cartes
+        var values = cartes
             .Select(carte => carte.value)
-            .OrderBy(valeur => valeur)
+            .OrderBy(value => value)
             .ToList();
 
-        bool contientSuite = valeurs.Distinct().Count() == 5
-            && valeurs[4] - valeurs[0] == 4;
+        bool contientSuite = values.Distinct().Count() == 5
+            && values[4] - values[0] == 4;
 
         if (contientSuite)
         {
