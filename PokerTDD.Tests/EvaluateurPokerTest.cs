@@ -91,6 +91,25 @@ public class EvaluateurPokerTest
 
         Assert.Equal(50, resultat);
     }
+    [Fact]
+    public void Evaluer_AvecUnCarre_Retourne60Points()
+    {
+        var main = new[]
+        {
+            new Carte(4, Enseigne.Coeur),
+            new Carte(4, Enseigne.Pique),
+            new Carte(4, Enseigne.Carreau),
+            new Carte(4, Enseigne.Trefle),
+            new Carte(13, Enseigne.Coeur)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(60, resultat);
+    }
+
 
 
 
