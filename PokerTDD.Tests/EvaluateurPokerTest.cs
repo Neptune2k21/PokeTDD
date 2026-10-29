@@ -16,5 +16,23 @@ public class EvaluateurPokerTest
 
         Assert.Equal(30, _evaluateur.Evaluer(main));
     }
+    [Fact]
+    public void Evaluer_SansCombinaison_RetourneLaCarteHaute()
+    {
+        var main = new[]
+        {
+            new Carte(3, Enseigne.Trefle),
+            new Carte(6, Enseigne.Carreau),
+            new Carte(8, Enseigne.Coeur),
+            new Carte(12, Enseigne.Pique),
+            new Carte(13, Enseigne.Trefle)
+        };
+
+        var evaluateur = new EvaluateurPoker();
+
+        int resultat = evaluateur.Evaluer(main);
+
+        Assert.Equal(13, resultat);
+    }
 }
 
