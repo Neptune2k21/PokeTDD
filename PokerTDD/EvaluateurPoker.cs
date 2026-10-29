@@ -15,6 +15,21 @@ public class EvaluateurPoker
             return 30;
         }
 
+        var valeurs = cartes
+            .Select(carte => carte.value)
+            .OrderBy(valeur => valeur)
+            .ToList();
+
+        bool contientSuite = valeurs
+            .Distinct()
+            .Count() == 5
+            && valeurs[4] - valeurs[0] == 4;
+
+        if (contientSuite)
+        {
+            return 40;
+        }
+
         return cartes.Max(carte => carte.value);
     }
 }
